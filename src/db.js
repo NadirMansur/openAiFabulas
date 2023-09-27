@@ -50,7 +50,9 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 console.log(sequelize.models);
 const {
-Fabula
+Fabula,
+Personaje,
+Moraleja
 } = sequelize.models;
 
 
@@ -66,6 +68,12 @@ Fabula
 // Post.belongsTo(User, {foreignKey:'UserId'}) // añande una UserId  a la tabla Post
 
 //Relaciones
+
+Fabula.belongsToMany(Personaje, { through: "personaje_fabula" }); //Crea tabla intermedia
+Personaje.belongsToMany(Fabula, { through: "personaje_fabula" }); //Crea tabla intermedia
+
+Moraleja.hasMany(Fabula, { foreignKey: 'moralejaId' });
+Fabula.belongsTo(Moraleja, { foreignKey: 'moralejaId' });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

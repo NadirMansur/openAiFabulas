@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "Fabula",
+    "Moraleja",
     {
       /// id seria el codigo ISBN del libro ///
       id: {
@@ -10,20 +10,8 @@ module.exports = (sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      image: {
+      text: {
         type: DataTypes.TEXT,
-        allowNull: true,
-      },
-      texto: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-      },
-      moraleja: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-      },
-      personajes: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
     },
