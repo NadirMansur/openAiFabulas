@@ -100,7 +100,7 @@ const asyncForEach = async () => {
       const crearPersonaje = await Personaje.create({
         name: item,
       });
-      console.log(crearPersonaje);
+      //console.log(crearPersonaje);
     } catch (e) {
       console.log("Error", e);
     }

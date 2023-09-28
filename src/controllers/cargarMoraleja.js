@@ -72,7 +72,7 @@ const asyncCrearMoraleja = async () => {
       const crearMoraleja = await Moraleja.create({
         text: item,
       });
-      console.log(crearMoraleja);
+      //console.log(crearMoraleja);
     } catch (e) {
       console.log("Error", e);
     }

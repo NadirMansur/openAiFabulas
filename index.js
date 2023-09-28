@@ -21,9 +21,8 @@ async function main() {
         asyncForEach()
         asyncCrearMoraleja()
         // Ejecutar la tarea todos los días a las 2:30 PM
-        cron.schedule("33 * * * *", () => {
+        cron.schedule("59 15 * * *", () => {
           // Coloca aquí el código que deseas ejecutar
-          console.log("Tarea programada ejecutada.");
           tareaProgramada()
         });
       });
