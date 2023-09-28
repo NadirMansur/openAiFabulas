@@ -2,8 +2,31 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST, RW_URLdb, RW_USERdb, RW_PORTdb } =
-  process.env;
+// const { DB_USER, DB_PASSWORD, DB_HOST, RW_URLdb, RW_USERdb, RW_PORTdb } =
+//   process.env;
+
+
+
+
+// Verifica si estamos en el entorno de desarrollo local o en Railway
+const isLocal = process.env.NODE_ENV !== "production";
+
+// Utiliza las variables de entorno correspondientes
+const DB_USER = isLocal ? process.env.DB_USER : process.env.RW_USERdb;
+const DB_PASSWORD = isLocal ? process.env.DB_PASSWORD : process.env.RW_PASSWORD;
+const DB_HOST = isLocal ? process.env.DB_HOST : process.env.RW_URLdb;
+const DB_PORT = isLocal ? process.env.DB_PORT : process.env.RW_PORTdb;
+const DB_NAME = isLocal ? process.env.DB_NAME : process.env.RW_DB_NAME;
+
+// Crea la conexión a la base de datos
+const sequelize = new Sequelize(
+  `postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+  {
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  }
+);
+
 
 // const sequelize = new Sequelize(
 //   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/fabulas`,
@@ -14,13 +37,13 @@ const { DB_USER, DB_PASSWORD, DB_HOST, RW_URLdb, RW_USERdb, RW_PORTdb } =
 // ); 
 
 // Conectar con la DB remota (Railway)
- const sequelize = new Sequelize(
-   `postgresql://postgres:${RW_USERdb}@${RW_URLdb}:${RW_PORTdb}/railway`,
-   {
-     logging: false, // set to console.log to see the raw SQL queries
-     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-    }
-);
+//  const sequelize = new Sequelize(
+//    `postgresql://postgres:${RW_USERdb}@${RW_URLdb}:${RW_PORTdb}/railway`,
+//    {
+//      logging: false, // set to console.log to see the raw SQL queries
+//      native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+//     }
+// );
 
 const basename = path.basename(__filename);
 
