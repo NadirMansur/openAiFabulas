@@ -6,6 +6,7 @@ const { PORT } = process.env;
 const asyncForEach = require("./src/controllers/cargarPersonajes")
 const asyncCrearMoraleja = require("./src/controllers/cargarMoraleja")
 const tareaProgramada = require("./src/controllers/openAi")
+const eliminarVacio = require("./src/controllers/eliminarVacio")
 //const fillBdd = require ("./src/controllers/fillBdd")
 // Syncing all the models at once.
 async function main() {
@@ -20,6 +21,7 @@ async function main() {
         console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
         //asyncForEach()
         //asyncCrearMoraleja()
+        eliminarVacio();
         // Ejecutar la tarea todos los días a las 2:30 PM
         cron.schedule("59 15 * * *", async () => {
           // Coloca aquí el código que deseas ejecutar
