@@ -40,10 +40,10 @@ const crearFabula = async () => {
       moraleja: moraleja,
       personajes: animales.split(", "),
     });
+    await textoImage(fabula, crearFabula.dataValues.id);
     console.log("-------------");
    // console.log(crearFabula.dataValues.id);
     console.log("-------------");
-    textoImage(fabula, crearFabula.dataValues.id);
   } catch (error) {
     console.log(error);
   }

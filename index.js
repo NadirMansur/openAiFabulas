@@ -18,12 +18,12 @@ async function main() {
       // Iniciar el servidor web en el puerto especificado
       server.listen(PORT, () => {
         console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
-        asyncForEach()
-        asyncCrearMoraleja()
+        //asyncForEach()
+        //asyncCrearMoraleja()
         // Ejecutar la tarea todos los días a las 2:30 PM
-        cron.schedule("59 15 * * *", () => {
+        cron.schedule("59 15 * * *", async () => {
           // Coloca aquí el código que deseas ejecutar
-          tareaProgramada()
+         await tareaProgramada()
         });
       });
     });
