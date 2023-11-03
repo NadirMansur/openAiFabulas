@@ -13,7 +13,6 @@ const crearFabula = require("./crearFabula");
 
 const tareaProgramada = async () => {
   console.log("Tarea programada en ejecucion.");
- await  eliminarVacio()
  await crearFabula();
  await  eliminarVacio()
 };
