@@ -10,6 +10,7 @@ const path = require("path");
 
 // Verifica si estamos en el entorno de desarrollo local o en Railway
 const isLocal = process.env.NODE_ENV !== "production";
+//const isLocal = false;
 
 // Utiliza las variables de entorno correspondientes
 const DB_USER = isLocal ? process.env.DB_USER : process.env.RW_USERdb;

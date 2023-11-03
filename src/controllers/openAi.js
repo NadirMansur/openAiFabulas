@@ -14,7 +14,7 @@ const crearFabula = require("./crearFabula");
 const tareaProgramada = async () => {
   console.log("Tarea programada en ejecucion.");
  await crearFabula();
- await  eliminarVacio()
+ //await  eliminarVacio()
 };
 
 module.exports = tareaProgramada;
